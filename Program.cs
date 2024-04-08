@@ -3,32 +3,10 @@
 using System.Text.Json;
 using CS_First_HTTP_Client;
 
-string baseAddress = "https://cat-fact.herokuapp.com";
-
-using var client = new HttpClient();
-client.BaseAddress = new(baseAddress);
-
-var request = new HttpRequestMessage(HttpMethod.Get, "facts");
-
-var response = client.Send(request);
-
-if (response.IsSuccessStatusCode)
+HttpClient client = new()
 {
-    var content = (List<CatFact>?)JsonSerializer.Deserialize(
-        response.Content.ReadAsStream(), typeof(List<CatFact>));
-
-    if (content is null)
-    {
-        Console.WriteLine("Something went wrong...");
-        return;
-    }
-
-    foreach (var fact in content)
-    {
-        Console.WriteLine(fact.text);
-    }
+    BaseAddress = new Uri("https://forms-dev.winsor.edu");
 }
-else
-{
-    Console.WriteLine($"Request failed with status code {response.StatusCode}");
-}
+;
+var login = new Login("gracie.zhou@winsor.edu, "&!*428okeKKN");
+
