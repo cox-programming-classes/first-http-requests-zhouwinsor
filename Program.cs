@@ -1,12 +1,21 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using CS_First_HTTP_Client;
 
-HttpClient client = new()
-{
-    BaseAddress = new Uri("https://forms-dev.winsor.edu");
+await ApiService.Current.AuthenticateAsync(new("gracie.zhou@winsor.edu", "&!*428okeKKN"));
+var user = await ApiService.Current.SendAsync<UserInfo>(HttpMethod.Get, "api/users/self");
+var classes= await ApiService.Current.SendAsync<Schedule[]>(HttpMethod.Get, "api/schedule/academics");
+/*foreach (var a in classes){
+    Console.WriteLine(a);
 }
-;
-var login = new Login("gracie.zhou@winsor.edu, "&!*428okeKKN");
+*/
+var cycleDays = await ApiService.Current.SendAsync<CycleDay[]>(HttpMethod.Get, "api/schedule/cycle-day");
 
+foreach (var day in cycleDays)
+{
+    Console.WriteLine($"{day.date:yyyy-M-d dddd} is {day.cycleDay}");
+}
