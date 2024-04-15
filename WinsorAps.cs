@@ -17,4 +17,14 @@ public readonly record struct Schedule(string sectionId, string courseId, string
     teachers, string[] students, string termId, string room, string block, string blockId, string displayName, string schoolLevel);
 
 public readonly record struct CycleDay(DateOnly date, String cycleDay);
+
+public readonly record struct Assessment(string id, string type, string summary, string description, 
+    DateOnly start, DateOnly end, bool allDay, string[] affectedClasses, bool passUsed, bool passAvailable);
+
+public readonly record struct Passes(Assessment assessment, StudentInfo student);
+
+
+
+
+
     
