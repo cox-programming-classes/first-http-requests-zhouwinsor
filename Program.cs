@@ -13,8 +13,9 @@ await ApiService.Current.AuthenticateAsync(new("gracie.zhou@winsor.edu", "&!*428
 var schedule = await scheduleService.GetAcademicSchedule();
 
 foreach (var classes in schedule) {
-Console.WriteLine(classes);
+    Console.WriteLine(classes);
 }
+
 
 //var user = await ApiService.Current.SendAsync<UserInfo>(HttpMethod.Get, "api/users/self");
 //var classes= await ApiService.Current.SendAsync<Schedule[]>(HttpMethod.Get, "api/schedule/academics");

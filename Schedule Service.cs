@@ -15,4 +15,6 @@ public class ScheduleService
     {
         return await _api.SendAsync<ImmutableArray<Schedule>>(HttpMethod.Get, $"api/schedule/academics?detailed={detailed}");
     }
+    
 }
+

@@ -13,8 +13,23 @@ public readonly record struct StudentInfo(int gradYear, string className, Adviso
 
 public readonly record struct AdvisorInfo(string id, string firstName, string lastName, string email);
 
-public readonly record struct Schedule(string sectionId, string courseId, string primaryTeacherId, string[] 
-    teachers, string[] students, string termId, string room, string block, string blockId, string displayName, string schoolLevel);
+public readonly record struct Schedule(
+    string sectionId,
+    string courseId,
+    string primaryTeacherId,
+    string[]
+        teachers,
+    string[] students,
+    string termId,
+    string room,
+    string block,
+    string blockId,
+    string displayName,
+    string schoolLevel)
+{
+    public override string ToString() =>
+        $"{displayName} in block {block}";
+}
 
 public readonly record struct CycleDay(DateOnly date, String cycleDay);
 
